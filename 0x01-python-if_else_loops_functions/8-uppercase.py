@@ -8,5 +8,5 @@ def to_upper(character)
 def uppercase(string):
     string_new = ""
     for character in string:
-        string_new += "^c" % to_upper(character)
+        string_new += "%C" % to_upper(character)
         print("{:s}".format(string_new))
