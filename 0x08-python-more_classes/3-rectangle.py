@@ -1,94 +1,58 @@
 #!/usr/bin/python3
-"""Defines a class Rectangle"""
+"""
+Defines a class Rectangle
+"""
+
+
 class Rectangle:
-    """
-    Class that defines properties of rectangle by: (based on 2-rectangle.py).
-    Attributes:
-        width (int): width of the rectangle.
-        height (int): height of the rectangle.
-    """
+    """Representation of a rectangle"""
     def __init__(self, width=0, height=0):
-        """Creates new instances of Rectangle.
-        Args:
-            width (int, optional): width of rectangle. Defaults to 0.
-            height (int, optional): height of rectangle. Defaults to 0.
-        """
-        self.height = height
+        """Initializes the rectangle"""
         self.width = width
+        self.height = height
+
     @property
     def width(self):
-        """Width retriver.
-        Returns:
-            int: the width of the rectangle.
-        """
+        """getter for the private instance attribute width"""
         return self.__width
-    @property
-    def height(self):
-        """Height retriver.
-        Returns:
-            int: the height of the rectangle.
-        """
-        return self.__height
+
     @width.setter
     def width(self, value):
-        """Property setter for width of rectangle.
-        Args:
-            value (int): width of the rectangle.
-        Raises:
-            TypeError: if width is not an integer.
-            ValueError: if width is less than 0.
-        """
-        if not isinstance(value, int):
+        """setter for the private instance attribute width"""
+        if type(value) is not int:
             raise TypeError("width must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
+        self.__width = value
+
+    @property
+    def height(self):
+        """getter for the private instance attribute height"""
+        return self.__height
+
     @height.setter
     def height(self, value):
-        """Property setter for height of recyangle.
-        Args:
-            value (int): height of the rectangle.
-        Raises:
-            TypeError: if height is not an integer.
-            ValueError: if height is less than 0.
-        """
-        if not isinstance(value, int):
+        """setter for the private instance attribute height"""
+        if type(value) is not int:
             raise TypeError("height must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("height must be >= 0")
-        else:
-            self.__height = value
+        self.__height = value
+
     def area(self):
-        """Calculates area of a rectangle.
-        Returns:
-            int: area.
-        """
-        return self.__height * self.__width
+        """returns the area of the rectangle"""
+        return self.__width * self.__height
+
     def perimeter(self):
-        """Calculates perimeter of a rectangle
-        Returns:
-            int: perimeter.
-        """
-        if self.__height == 0 or self.width == 0:
-            return 0
-        else:
-            return 2 * (self.__height + self.__width)
-    def __str__(self):
-        """Prints the rectangle with the character # .
-        Returns:
-            str: the rectangle
-        """
-        rectangle = []
+        """returns the perimeter of the rectangle"""
         if self.__width == 0 or self.__height == 0:
-            return ""
-        for i in range(self.__height):
-            for j in range(self.__width):
-                rectangle.append("#")
-            rectangle.append("\n")
+            return 0
+        return (self.__width * 2) + (self.__height * 2)
 
-
-        # remove blank line
-        rectangle.pop()
-
-        return "".join(rectangle)
+    def __str__(self):
+        """returns printable string representation of the rectangle"""
+        string = ""
+        if self.__width != 0 and self.__height != 0:
+            string += "\n".join("#" * self.__width
+                                for j in range(self.__height))
+        return string
