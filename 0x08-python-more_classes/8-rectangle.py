@@ -57,7 +57,7 @@ class Rectangle:
         print('Bye rectangle...')
 
      @staticmethod
-    @staticmethod
+     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """
             compare 2 rectangle
