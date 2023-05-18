@@ -1,2 +1,4 @@
--- Prints the full description of the table first_table from the database hbtn_0c_0.
-SHOW CREATE TABLE 'first_table' DESC;
+-- Prints the full description of the table
+-- first_table from the current database.
+
+SHOW CREATE TABLE `first_table`;
